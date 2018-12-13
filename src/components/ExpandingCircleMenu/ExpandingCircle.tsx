@@ -64,7 +64,6 @@ export class ExpandingCircle extends React.Component<Props, State> {
   }
 
   onRest = () => {
-    console.log("resting");
     this.setState({ animating: false });
   };
 
