@@ -15,12 +15,25 @@ const Shape = styled(Card)<Open>`
   width: 46px;
   height: 46px;
   border-radius: 50%;
+  background: salmon;
   transition: all 400ms ease-out 400ms;
   ${props =>
     props.open &&
     css`
       transition-delay: 0ms;
     `}
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: scale(${props => (props.open ? 1 : 0)});
+    border-radius: 50%;
+    transition: all 400ms ease-out 400ms;
+  }
 `;
 
 const Lines = styled.div<Open>`
@@ -83,7 +96,7 @@ const FirstC = styled(Line)`
     props.open &&
     css`
       transform: rotate(45deg) scaleX(1) translateX(5px);
-      transition-delay: 400ms;
+      transition-delay: 500ms;
     `}
 `;
 
@@ -108,7 +121,7 @@ interface Props {
 
 export const MenuButton: React.SFC<Props> = ({ toggleMenu, open }) => (
   <Wrapper onClick={toggleMenu}>
-    <Shape open={open} bg={open ? "white.light" : "salmon"} shadow={1} />
+    <Shape open={open} shadow={1} />
     <Lines open={open}>
       <First open={open} />
       <Second open={open} />
