@@ -22,10 +22,6 @@ const Shape = styled(Box)<{ open: boolean }>`
   right: 10px;
   height: 46px;
   width: 46px;
-  ${props => props.theme.devices[2]} {
-    height: 100px;
-    width: 100px;
-  }
   border-radius: 50%;
   z-index: 2;
   background: salmon;
@@ -78,7 +74,7 @@ export class ExpandingCircle extends React.Component<Props, State> {
           <Motion
             defaultStyle={{ x: 0, opacity: 0 }}
             style={{
-              x: spring(open ? 10 : 0),
+              x: spring(open ? 20 : 0),
               opacity: spring(open ? 1 : 0),
             }}
             onRest={this.onRest}
