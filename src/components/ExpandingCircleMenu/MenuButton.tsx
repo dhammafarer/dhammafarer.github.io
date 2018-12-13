@@ -75,27 +75,28 @@ const Third = styled(Line)`
     `}
 `;
 const FirstC = styled(Line)`
-  top: 0px;
+  top: -5px;
   transform-origin: 0% 0%;
   transition: all 400ms linear 0ms;
-  transform: rotate(45deg) scaleY(0);
+  transform: rotate(45deg) scaleX(0) translateY(0px);
   ${props =>
     props.open &&
     css`
-      transform: rotate(45deg) scaleX(1);
+      transform: rotate(45deg) scaleX(1) translateX(5px);
       transition-delay: 400ms;
     `}
 `;
 
 const SecondC = styled(Line)`
-  top: 0px;
+  top: -5px;
+  left: 2px;
   transform-origin: 100% 100%;
   transition: all 400ms linear 0ms;
-  transform: rotate(-45deg) scaleY(0) translateY(10px);
+  transform: rotate(-45deg) scaleX(0) translateY(0px);
   ${props =>
     props.open &&
     css`
-      transform: rotate(-45deg) scaleY(1);
+      transform: rotate(-45deg) scaleX(1) translateX(-5px);
       transition-delay: 400ms;
     `}
 `;
