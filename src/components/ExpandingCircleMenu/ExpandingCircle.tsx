@@ -77,12 +77,25 @@ export class ExpandingCircle extends React.Component<Props, State> {
         </ButtonWrapper>
         <MenuWrapper open={this.state.animating || this.props.open}>
           <Motion
-            defaultStyle={{ x: 0 }}
-            style={{ x: spring(open ? 10 : 0) }}
+            defaultStyle={{ x: 0, opacity: 0 }}
+            style={{
+              x: spring(open ? 10 : 0),
+              opacity: spring(open ? 1 : 0),
+            }}
             onRest={this.onRest}
           >
             {styles => (
-              <Shape style={{ transform: `scale(${styles.x})` }} open={open} />
+              <>
+                <Box
+                  width={1}
+                  bg="salmon"
+                  style={{ opacity: styles.opacity }}
+                />
+                <Shape
+                  style={{ transform: `scale(${styles.x})` }}
+                  open={open}
+                />
+              </>
             )}
           </Motion>
         </MenuWrapper>
