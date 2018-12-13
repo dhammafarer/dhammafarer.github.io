@@ -10,11 +10,13 @@ const Wrapper = styled.div`
   z-index: 3;
 `;
 
-const Shape = styled(Card)`
+const Shape = styled(Card)<Open>`
   position: relative;
   width: 46px;
   height: 46px;
   border-radius: 50%;
+  background: ${props => (props.open ? "white" : "salmon")};
+  transition: all 400ms ease-out;
 `;
 
 const Lines = styled.div<Open>``;
@@ -31,7 +33,7 @@ interface Props {
 
 export const MenuButton: React.SFC<Props> = ({ toggleMenu, open }) => (
   <Wrapper onClick={toggleMenu}>
-    <Shape bg="salmon" shadow={1} />
+    <Shape open={open} shadow={1} />
     <Opened open={open}>
       <Line />
       <Line />
