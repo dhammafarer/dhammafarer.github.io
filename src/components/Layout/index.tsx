@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 import { styled, makeTheme } from "src/theme";
 import { Flex, Box } from "src/theme/primitives";
 import { createGlobalStyle } from "styled-components";
-import { lighten, darken } from "../../utils/helpers";
 import { FormattedMessage } from "react-intl";
 import * as m from "./Layout.messages";
 
@@ -12,29 +11,9 @@ import { Normalize } from "styled-normalize";
 import { Head } from "./Head";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { theme } from "./theme";
 
-const primary = "rgb(36,140,204)";
-const secondary = "rgb(203,160,83)";
-
-const myTheme = makeTheme({
-  colors: {
-    primary: {
-      dark: darken(primary)(1 / 4),
-      main: primary,
-      light: lighten(primary)(1 / 4),
-      contrast: "rgba(255,255,255,0.85)",
-    },
-    secondary: {
-      dark: darken(secondary)(1 / 4),
-      main: secondary,
-      light: lighten(secondary)(1 / 4),
-      contrast: "rgba(255,255,255,0.85)",
-    },
-  },
-  fonts: {
-    sans: "Catamaran",
-  },
-});
+const myTheme = makeTheme(theme);
 
 const GlobalStyle = createGlobalStyle`
   body {

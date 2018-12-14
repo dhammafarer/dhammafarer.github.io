@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MakeMenu } from "../utils/MakeMenu";
 import { ExpandingCircle } from "./ExpandingCircle";
-import { Text, Flex } from "src/theme/primitives";
+import { Flex } from "src/theme/primitives";
 import { NavWrapper } from "./styles";
 import { Button } from "../Button";
 import { Brandname } from "../Brandname";
