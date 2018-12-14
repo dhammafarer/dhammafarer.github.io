@@ -2,7 +2,9 @@ import * as React from "react";
 import { ExpandingCircleMenu } from "../../ExpandingCircleMenu";
 import { styled } from "src/theme";
 import { Link } from "../../../i18n";
-import { Flex, Text } from "src/theme/primitives";
+import { Flex, Card, Text } from "src/theme/primitives";
+import { Brandname } from "../../Brandname";
+import { Logo } from "../../Logo";
 
 const Trigger = styled.div`
   display: block;
@@ -20,16 +22,6 @@ export const LogoWrapper = styled(Flex)`
   width: ${props => props.theme.dimensions[2]};
 `;
 
-export const Logo = styled.img`
-  width: 100%;
-`;
-export const BrandName = styled(Text)`
-  display: none;
-  ${props => props.theme.devices[1]} {
-    display: block;
-  }
-`;
-
 interface HeaderProps {
   logo?: any;
   title: string;
@@ -45,16 +37,27 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     justifyContent="space-between"
   >
     <Link to="/">
-      <Brand alignItems="center">
-        <BrandName color="primary.main" fontSize={3} ml={3}>
-          {title}
-        </BrandName>
+      <Brand alignItems="center" color="secondary.main">
+        <Card
+          b={1}
+          borderColor="inherit"
+          bg="secondary.main"
+          color="black.light"
+          radius={2}
+          p={1}
+          style={{ display: "inline-block" }}
+        >
+          <Logo size={36} strokeWidth={4} />
+        </Card>
+        <Flex ml={2}>
+          <Brandname color="inherit" size={6} value={title} />
+        </Flex>
       </Brand>
     </Link>
     <Flex>
       <Trigger>
         <ExpandingCircleMenu
-          bg="primary.main"
+          bg="secondary.main"
           fg="white.main"
           title={title}
           navItems={navItems}

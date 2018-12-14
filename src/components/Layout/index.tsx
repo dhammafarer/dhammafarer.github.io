@@ -36,6 +36,23 @@ const Content = styled(Flex)`
   flex-direction: column;
   overflow-x: hidden;
   min-height: 100vh;
+  background: linear-gradient(
+    30deg,
+    ${props => props.theme.colors.black.dark},
+    ${props => props.theme.colors.black.light}
+  );
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-image: url(${require("../../images/patterns/noise_pattern_2.jpg")});
+    background-repeat: repeat;
+    opacity: 0.15;
+  }
 `;
 
 const Main = styled(Box)`
