@@ -4,6 +4,7 @@ import { ExpandingCircle } from "./ExpandingCircle";
 import { Text, Flex } from "src/theme/primitives";
 import { NavWrapper } from "./styles";
 import { Button } from "../Button";
+import { Brandname } from "../Brandname";
 
 interface Props {
   title: string;
@@ -32,24 +33,7 @@ export const ExpandingCircleMenu: React.SFC<Props> = ({
           width={1}
         >
           <Flex flexDirection="column">
-            <Text
-              as="h1"
-              color="text.main"
-              fontWeight={2}
-              textTransform="uppercase"
-              fontSize={[5, 6]}
-            >
-              {title.split(" ")[0]}
-            </Text>
-            <Text
-              as="h1"
-              color="text.main"
-              fontWeight={5}
-              textTransform="uppercase"
-              fontSize={[5, 6]}
-            >
-              {title.split(" ")[1]}
-            </Text>
+            <Brandname value={title} size={6} color="text.main" />
           </Flex>
           <Flex flexDirection="column" mt={2}>
             {navItems.map(x => (
