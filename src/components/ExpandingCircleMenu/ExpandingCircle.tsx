@@ -6,10 +6,6 @@ import { Motion, spring } from "react-motion";
 
 type Open = { open: boolean };
 
-const Wrapper = styled(Box)<{ open: boolean }>`
-  background: grey;
-`;
-
 const ButtonWrapper = styled(Box)`
   position: absolute;
   top: 10px;
@@ -24,7 +20,6 @@ const Shape = styled(Box)<{ open: boolean }>`
   width: 46px;
   border-radius: 50%;
   z-index: 2;
-  background: salmon;
 `;
 
 const MenuWrapper = styled(Flex)<Open>`
@@ -46,6 +41,8 @@ interface Props {
   navItems: { label: React.ReactNode; to: string }[];
   open: boolean;
   toggleMenu(): void;
+  bg: string;
+  fg: string;
 }
 
 interface State {
@@ -64,11 +61,11 @@ export class ExpandingCircle extends React.Component<Props, State> {
   };
 
   render() {
-    const { open, toggleMenu } = this.props;
+    const { open, toggleMenu, bg, fg } = this.props;
     return (
-      <Wrapper open={open}>
+      <Box>
         <ButtonWrapper>
-          <MenuButton open={open} toggleMenu={toggleMenu} />
+          <MenuButton bg={bg} fg={fg} open={open} toggleMenu={toggleMenu} />
         </ButtonWrapper>
         <MenuWrapper open={this.state.animating || this.props.open}>
           <Motion
@@ -81,20 +78,17 @@ export class ExpandingCircle extends React.Component<Props, State> {
           >
             {styles => (
               <>
-                <Box
-                  width={1}
-                  bg="salmon"
-                  style={{ opacity: styles.opacity }}
-                />
+                <Box width={1} bg={bg} style={{ opacity: styles.opacity }} />
                 <Shape
                   style={{ transform: `scale(${styles.x})` }}
                   open={open}
+                  bg={bg}
                 />
               </>
             )}
           </Motion>
         </MenuWrapper>
-      </Wrapper>
+      </Box>
     );
   }
 }

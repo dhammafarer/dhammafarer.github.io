@@ -53,7 +53,13 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     </Link>
     <Flex>
       <Trigger>
-        <ExpandingCircleMenu title={title} navItems={navItems} logo={logo} />
+        <ExpandingCircleMenu
+          bg="primary.main"
+          fg="white.main"
+          title={title}
+          navItems={navItems}
+          logo={logo}
+        />
       </Trigger>
     </Flex>
   </Wrapper>

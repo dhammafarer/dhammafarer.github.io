@@ -1,6 +1,6 @@
 import * as React from "react";
 import { styled, css } from "src/theme";
-import { Card } from "src/theme/primitives";
+import { Box, Card } from "src/theme/primitives";
 
 type Open = { open: boolean };
 
@@ -15,28 +15,26 @@ const Shape = styled(Card)<Open>`
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: salmon;
   transition: all 400ms ease-out 400ms;
   ${props =>
     props.open &&
     css`
       transition-delay: 0ms;
     `}
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    transform: scale(${props => (props.open ? 1 : 0)});
-    border-radius: 50%;
-    transition: all 400ms ease-out 400ms;
-  }
 `;
 
-const Lines = styled.div`
+const ShapeOverlay = styled(Box)<{ open: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(${props => (props.open ? 1 : 0)});
+  border-radius: 50%;
+  transition: all 400ms ease-out 400ms;
+`;
+
+const Lines = styled(Box)`
   position: absolute;
   top: 18px;
   left: 15px;
@@ -44,9 +42,8 @@ const Lines = styled.div`
   height: 46px;
 `;
 
-const Line = styled.div<{ open: boolean }>`
+const Line = styled(Box)<{ open: boolean }>`
   position: absolute;
-  background: black;
   width: 16px;
   height: 2px;
   border-radius: 2px;
@@ -111,19 +108,23 @@ const Right = styled(Line)`
 interface Props {
   open: boolean;
   toggleMenu(): void;
+  bg: string;
+  fg: string;
 }
 
-export const MenuButton: React.SFC<Props> = ({ toggleMenu, open }) => (
+export const MenuButton: React.SFC<Props> = ({ toggleMenu, open, bg, fg }) => (
   <Wrapper onClick={toggleMenu}>
-    <Shape open={open} shadow={1} />
+    <Shape open={open} shadow={1} bg={bg}>
+      <ShapeOverlay open={open} bg={fg} />
+    </Shape>
     <Lines>
-      <First open={open} />
-      <Second open={open} />
-      <Third open={open} />
+      <First bg={fg} open={open} />
+      <Second bg={fg} open={open} />
+      <Third bg={fg} open={open} />
     </Lines>
     <Lines>
-      <Left open={open} />
-      <Right open={open} />
+      <Left bg={bg} open={open} />
+      <Right bg={bg} open={open} />
     </Lines>
   </Wrapper>
 );
