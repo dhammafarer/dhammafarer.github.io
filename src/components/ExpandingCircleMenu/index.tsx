@@ -1,12 +1,12 @@
 import * as React from "react";
 import { MakeMenu } from "../utils/MakeMenu";
 import { ExpandingCircle } from "./ExpandingCircle";
-import { Box, Text, Flex } from "src/theme/primitives";
+import { Text, Flex } from "src/theme/primitives";
 import { NavWrapper } from "./styles";
 import { Button } from "../Button";
 
 interface Props {
-  title: React.ReactNode;
+  title: string;
   logo: any;
   navItems: { label: React.ReactNode; to: string }[];
   bg: string;
@@ -39,7 +39,7 @@ export const ExpandingCircleMenu: React.SFC<Props> = ({
               textTransform="uppercase"
               fontSize={[5, 6]}
             >
-              One
+              {title.split(" ")[0]}
             </Text>
             <Text
               as="h1"
@@ -48,7 +48,7 @@ export const ExpandingCircleMenu: React.SFC<Props> = ({
               textTransform="uppercase"
               fontSize={[5, 6]}
             >
-              Two
+              {title.split(" ")[1]}
             </Text>
           </Flex>
           <Flex flexDirection="column" mt={2}>

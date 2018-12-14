@@ -32,7 +32,7 @@ export const BrandName = styled(Text)`
 
 interface HeaderProps {
   logo?: any;
-  title: React.ReactNode;
+  title: string;
   navItems: { to: string; label: React.ReactNode }[];
 }
 

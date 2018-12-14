@@ -68,6 +68,11 @@ const Main = styled(Box)`
 interface Data {
   logo: any;
   logoWhite: any;
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
 }
 
 const navItems = [
@@ -77,7 +82,6 @@ const navItems = [
   { to: "/contact", label: <FormattedMessage {...m.nav.contact} /> },
 ];
 
-const title = <FormattedMessage {...m.app.title} />;
 const phone = <FormattedMessage {...m.contact.phoneNumber} />;
 const email = <FormattedMessage {...m.contact.emailAddress} />;
 
@@ -85,6 +89,11 @@ export const Layout: React.SFC<{}> = ({ children }) => (
   <StaticQuery
     query={graphql`
       query Layout2Query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
         logo: file(relativePath: { eq: "logos/logo.png" }) {
           childImageSharp {
             fixed(width: 100, quality: 100) {
@@ -102,6 +111,7 @@ export const Layout: React.SFC<{}> = ({ children }) => (
       }
     `}
     render={(data: Data) => {
+      const title = data.site.siteMetadata.title;
       return (
         <ThemeProvider theme={myTheme}>
           <Root>
