@@ -36,7 +36,7 @@ const Shape = styled(Card)<Open>`
   }
 `;
 
-const Lines = styled.div<Open>`
+const Lines = styled.div`
   position: absolute;
   top: 18px;
   left: 15px;
@@ -55,11 +55,12 @@ const Line = styled.div<{ open: boolean }>`
 const First = styled(Line)`
   top: 0px;
   transform-origin: 0% 0%;
-  transition: all 300ms linear 400ms;
+  transition: all 400ms ease-out 400ms;
+  transform: scaleX(1) translateX(0px);
   ${props =>
     props.open &&
     css`
-      transform: scaleX(0);
+      transform: scaleX(0) translateX(-15px);
       transition-delay: 0ms;
     `}
 `;
@@ -67,27 +68,20 @@ const First = styled(Line)`
 const Second = styled(Line)`
   top: 5px;
   transform-origin: 100% 100%;
-  transition: all 400ms linear 400ms;
+  transition: all 400ms ease-out 400ms;
+  transform: scaleX(1) translateX(0);
   ${props =>
     props.open &&
     css`
-      transform: scaleX(0);
+      transform: scaleX(0) translateX(15px);
       transition-delay: 0ms;
     `}
 `;
 
-const Third = styled(Line)`
+const Third = styled(First)`
   top: 10px;
-  transform-origin: 0% 0%;
-  transition: all 300ms linear 400ms;
-  ${props =>
-    props.open &&
-    css`
-      transform: scaleX(0);
-      transition-delay: 0ms;
-    `}
 `;
-const FirstC = styled(Line)`
+const Left = styled(Line)`
   top: -5px;
   transform-origin: 0% 0%;
   transition: all 400ms linear 0ms;
@@ -100,7 +94,7 @@ const FirstC = styled(Line)`
     `}
 `;
 
-const SecondC = styled(Line)`
+const Right = styled(Line)`
   top: -5px;
   left: 2px;
   transform-origin: 100% 100%;
@@ -122,14 +116,14 @@ interface Props {
 export const MenuButton: React.SFC<Props> = ({ toggleMenu, open }) => (
   <Wrapper onClick={toggleMenu}>
     <Shape open={open} shadow={1} />
-    <Lines open={open}>
+    <Lines>
       <First open={open} />
       <Second open={open} />
       <Third open={open} />
     </Lines>
-    <Lines open={open}>
-      <FirstC open={open} />
-      <SecondC open={open} />
+    <Lines>
+      <Left open={open} />
+      <Right open={open} />
     </Lines>
   </Wrapper>
 );
