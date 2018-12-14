@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MenuButton } from "./MenuButton";
-import { Box, Flex, Text } from "src/theme/primitives";
-import { styled, css } from "src/theme";
+import { Box, Flex } from "src/theme/primitives";
+import { styled } from "src/theme";
 import { Motion, spring } from "react-motion";
 
 type Open = { open: boolean };
@@ -26,16 +26,13 @@ const MenuWrapper = styled(Flex)<Open>`
   position: absolute;
   top: 0;
   right: 0;
-  ${props =>
-    props.open &&
-    css`
-      left: 0;
-      bottom: 0;
-    `}
+  left: 0;
+  bottom: 0;
+  transform: scale(${props => (props.open ? 1 : 0)});
   overflow: hidden;
 `;
 
-const MenuItems = styled(Flex)`
+const Content = styled(Box)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -44,17 +41,7 @@ const MenuItems = styled(Flex)`
   z-index: 2;
 `;
 
-const MenuItem = styled(Box)<{ open: boolean; i: number }>`
-  opacity: ${props => (props.open ? 1 : 0)};
-  transform: translateY(${props => (props.open ? "0px" : "-5px")});
-  transition: all 200ms ease-out;
-  transition-delay: ${props => (props.open ? `${400}ms` : "0ms")};
-`;
-
 interface Props {
-  title: React.ReactNode;
-  logo: any;
-  navItems: { label: React.ReactNode; to: string }[];
   open: boolean;
   toggleMenu(): void;
   bg: string;
@@ -77,7 +64,7 @@ export class ExpandingCircle extends React.Component<Props, State> {
   };
 
   render() {
-    const { navItems, open, toggleMenu, bg, fg } = this.props;
+    const { open, toggleMenu, bg, fg } = this.props;
     return (
       <Box>
         <ButtonWrapper>
@@ -103,13 +90,7 @@ export class ExpandingCircle extends React.Component<Props, State> {
               </>
             )}
           </Motion>
-          <MenuItems flexDirection="column">
-            {navItems.map((x, i) => (
-              <MenuItem i={i} open={open} m={2} color="white.light">
-                <Text fontSize={3}>{x.label}</Text>
-              </MenuItem>
-            ))}
-          </MenuItems>
+          <Content>{this.props.children}</Content>
         </MenuWrapper>
       </Box>
     );
