@@ -1,6 +1,6 @@
 import * as React from "react";
 import { MenuButton } from "./MenuButton";
-import { Box, Flex } from "src/theme/primitives";
+import { Box, Flex, Text } from "src/theme/primitives";
 import { styled, css } from "src/theme";
 import { Motion, spring } from "react-motion";
 
@@ -35,6 +35,22 @@ const MenuWrapper = styled(Flex)<Open>`
   overflow: hidden;
 `;
 
+const MenuItems = styled(Flex)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+`;
+
+const MenuItem = styled(Box)<{ open: boolean; i: number }>`
+  opacity: ${props => (props.open ? 1 : 0)};
+  transform: translateY(${props => (props.open ? "0px" : "-5px")});
+  transition: all 200ms ease-out;
+  transition-delay: ${props => (props.open ? `${400}ms` : "0ms")};
+`;
+
 interface Props {
   title: React.ReactNode;
   logo: any;
@@ -61,7 +77,7 @@ export class ExpandingCircle extends React.Component<Props, State> {
   };
 
   render() {
-    const { open, toggleMenu, bg, fg } = this.props;
+    const { navItems, open, toggleMenu, bg, fg } = this.props;
     return (
       <Box>
         <ButtonWrapper>
@@ -87,6 +103,13 @@ export class ExpandingCircle extends React.Component<Props, State> {
               </>
             )}
           </Motion>
+          <MenuItems flexDirection="column">
+            {navItems.map((x, i) => (
+              <MenuItem i={i} open={open} m={2} color="white.light">
+                <Text fontSize={3}>{x.label}</Text>
+              </MenuItem>
+            ))}
+          </MenuItems>
         </MenuWrapper>
       </Box>
     );
