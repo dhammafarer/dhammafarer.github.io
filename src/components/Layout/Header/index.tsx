@@ -6,10 +6,6 @@ import { Flex, Card, Text } from "src/theme/primitives";
 import { Brandname } from "../../Brandname";
 import { Logo } from "../../Logo";
 
-const Trigger = styled.div`
-  display: block;
-`;
-
 export const Wrapper = styled(Flex)`
   z-index: ${props => props.theme.zIndexes[5]};
 `;
@@ -39,8 +35,6 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
     <Link to="/">
       <Brand alignItems="center" color="secondary.main">
         <Card
-          b={1}
-          borderColor="inherit"
           bg="secondary.main"
           color="black.light"
           radius={2}
@@ -55,15 +49,13 @@ export const Header: React.SFC<HeaderProps> = ({ logo, title, navItems }) => (
       </Brand>
     </Link>
     <Flex>
-      <Trigger>
-        <ExpandingCircleMenu
-          bg="secondary.main"
-          fg="white.main"
-          title={title}
-          navItems={navItems}
-          logo={logo}
-        />
-      </Trigger>
+      <ExpandingCircleMenu
+        bg="secondary.main"
+        fg="white.main"
+        title={title}
+        navItems={navItems}
+        logo={logo}
+      />
     </Flex>
   </Wrapper>
 );

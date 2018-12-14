@@ -1,3 +1,3 @@
 module.exports = {
-  title: "App Title",
+  title: "Yong Chan",
 };

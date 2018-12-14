@@ -1,12 +1,16 @@
 import * as React from "react";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-import { Box } from "src/theme/primitives";
+import { Box, Text } from "src/theme/primitives";
 
 const Index: React.SFC<{}> = () => {
   return (
     <Layout>
-      <Box>Index</Box>
+      <Box p={4} bg="grey.900">
+        <Text my={5} fontSize={5}>
+          Heading
+        </Text>
+      </Box>
     </Layout>
   );
 };

@@ -14,11 +14,21 @@ export const Brandname: React.SFC<Props> = ({ value, size, color }) => {
   return (
     <>
       {snd && (
-        <Text fontSize={size} fontWeight={2} color={color}>
+        <Text
+          textTransform="uppercase"
+          fontSize={size}
+          fontWeight={2}
+          color={color}
+        >
           {fst}
         </Text>
       )}
-      <Text fontSize={size} fontWeight={5} color={color}>
+      <Text
+        textTransform="uppercase"
+        fontSize={size}
+        fontWeight={5}
+        color={color}
+      >
         {snd ? snd : fst}
       </Text>
     </>
