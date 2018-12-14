@@ -38,6 +38,7 @@ export const ExpandingCircleMenu: React.SFC<Props> = ({
           <Flex flexDirection="column" mt={2}>
             {navItems.map(x => (
               <Button
+                key={x.to}
                 m={1}
                 variant="white"
                 fontSize={[3, 4]}
