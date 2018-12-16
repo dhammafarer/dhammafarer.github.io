@@ -1,7 +1,6 @@
 import * as React from "react";
 import { MenuButton } from "./MenuButton";
-import { Box, Flex } from "src/theme/primitives";
-import { styled } from "src/theme";
+import { Box, Flex, styled } from "themed-primitives";
 import { Motion, spring } from "react-motion";
 
 type Open = { open: boolean };

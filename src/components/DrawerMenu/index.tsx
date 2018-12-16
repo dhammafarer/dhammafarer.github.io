@@ -1,28 +1,27 @@
-import * as React from 'react'
-import { MakeMenu } from '../utils/MakeMenu'
-import { Drawer } from '../Drawer'
-import { MenuButton } from './MenuButton'
-import { CloseButton } from './CloseButton'
-import { Flex, Text } from 'src/theme/primitives'
-import { Button } from '../Button'
-import { Image } from '../Image'
-import { styled } from 'src/theme'
-import { Link } from '../../i18n'
+import * as React from "react";
+import { MakeMenu } from "../utils/MakeMenu";
+import { Drawer } from "../Drawer";
+import { MenuButton } from "./MenuButton";
+import { CloseButton } from "./CloseButton";
+import { Flex, Text, styled } from "themed-primitives";
+import { Button } from "../Button";
+import { Image } from "../Image";
+import { Link } from "../../i18n";
 
 const Logo = styled(Image)`
   margin: 0 auto;
-`
+`;
 
 const DrawerContent = styled(Flex)`
   height: 100vh;
   position: relative;
   overflow-y: auto;
-`
+`;
 
 interface DrawerMenuProps {
-  logo?: any
-  title?: React.ReactNode
-  navItems: { to: string; label: React.ReactNode }[]
+  logo?: any;
+  title?: React.ReactNode;
+  navItems: { to: string; label: React.ReactNode }[];
 }
 
 const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
@@ -34,7 +33,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
 
           <Drawer
             open={injected.open}
-            anchor={'right'}
+            anchor={"right"}
             handleClose={injected.handleClose}
             toggleMenu={injected.toggleMenu}
             width={300}
@@ -73,7 +72,7 @@ const DrawerMenu: React.SFC<DrawerMenuProps> = ({ logo, title, navItems }) => {
         </>
       )}
     </MakeMenu>
-  )
-}
+  );
+};
 
-export { DrawerMenu }
+export { DrawerMenu };

@@ -1,6 +1,5 @@
 import * as React from "react";
-import { styled, css } from "src/theme";
-import { Box, Card } from "src/theme/primitives";
+import { Box, Card, styled, css } from "themed-primitives";
 
 type Open = { open: boolean };
 

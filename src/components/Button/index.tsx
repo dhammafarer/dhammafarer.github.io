@@ -1,6 +1,10 @@
 import * as React from "react";
-import { Button as Base, ButtonProps as BaseProps } from "src/theme/primitives";
-import { styled, css } from "src/theme";
+import {
+  styled,
+  css,
+  Button as Base,
+  ButtonProps as BaseProps,
+} from "themed-primitives";
 import { Link } from "../../i18n";
 
 interface ButtonProps extends BaseProps {

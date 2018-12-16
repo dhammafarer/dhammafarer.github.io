@@ -1,8 +1,7 @@
 import * as React from "react";
 import { ExpandingCircleMenu } from "../../ExpandingCircleMenu";
-import { styled } from "src/theme";
 import { Link } from "../../../i18n";
-import { Flex, Card, Text } from "src/theme/primitives";
+import { Flex, Card, styled } from "themed-primitives";
 import { Brandname } from "../../Brandname";
 import { Logo } from "../../Logo";
 

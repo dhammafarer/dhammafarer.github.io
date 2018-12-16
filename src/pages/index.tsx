@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Layout } from "../components/Layout";
 import { withIntl } from "../i18n";
-import { Box, Text } from "src/theme/primitives";
+import { Box, Text } from "themed-primitives";
 
 const Index: React.SFC<{}> = () => {
   return (

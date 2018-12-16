@@ -1,5 +1,4 @@
-import { styled, css } from "src/theme";
-import { Flex } from "src/theme/primitives";
+import { Flex, styled, css } from "themed-primitives";
 
 export const NavWrapper = styled(Flex)<{ open: boolean }>`
   height: 100%;
